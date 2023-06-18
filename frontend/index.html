@@ -54,10 +54,20 @@
       
         <main class="signed-in-flow" class="donation-body" style="display: none">
           <div class="row">
+            <div class="col-12">
+              Your account: <span data-behavior="account"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              Your balance: <span data-behavior="balance"></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-3 px-1"><button class="btn btn-outline-primary" onclick="set_donation(1)"> $ 1 </button></div>
+            <div class="col-3 px-1"><button class="btn btn-outline-primary" onclick="set_donation(2)"> $ 2 </button></div>
+            <div class="col-3 px-1"><button class="btn btn-outline-primary" onclick="set_donation(5)"> $ 5 </button></div>
             <div class="col-3 px-1"><button class="btn btn-outline-primary" onclick="set_donation(10)"> $ 10 </button></div>
-            <div class="col-3 px-1"><button class="btn btn-outline-primary" onclick="set_donation(20)"> $ 20 </button></div>
-            <div class="col-3 px-1"><button class="btn btn-outline-primary" onclick="set_donation(50)"> $ 50 </button></div>
-            <div class="col-3 px-1"><button class="btn btn-outline-primary" onclick="set_donation(100)"> $ 100 </button></div>
           </div>
   
           <form>

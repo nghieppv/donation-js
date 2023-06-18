@@ -21,6 +21,7 @@ window.onload = async () => {
 
   fetchBeneficiary()
   getAndShowDonations()
+  getAccountBalance()
 }
 
 // On submit, get the greeting and send it to the contract
@@ -59,6 +60,19 @@ async function fetchBeneficiary() {
   document.querySelectorAll('[data-behavior=beneficiary]').forEach(el => {
     el.innerText = currentGreeting
     el.value = currentGreeting
+  })
+}
+
+async function getAccountBalance(){
+  // Get account from the contract
+  const total = await contract.getAcountTotal(wallet.accountId);
+
+  document.querySelectorAll('[data-behavior=balance]').forEach(el => {
+    el.innerText = total
+  })
+
+  document.querySelectorAll('[data-behavior=account]').forEach(el => {
+    el.innerText = wallet.accountId
   })
 }
 
@@ -114,6 +128,7 @@ async function getAndShowDonations(){
 window.set_donation = async function(amount){
   let data = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=near&vs_currencies=usd").then(response => response.json())
   const near2usd = data['near']['usd']
+  console.log("near2usd: " + near2usd)
   const amount_in_near = amount / near2usd
   const rounded_two_decimals = Math.round(amount_in_near * 100) / 100
   document.querySelector('#donation').value = rounded_two_decimals
